@@ -1,7 +1,7 @@
 
 
 
-# A simple text editor written in julia using Freetype and SDL libraries
+# A simple code editor written in julia using Freetype and SDL
 
 <p align="center">
   <picture>
