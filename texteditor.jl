@@ -69,12 +69,9 @@ function launchFrame(surf2d)
     
     appState[:vimCur] = appState[:vimCur][end:end]
 
-    # sel = [ [ lines[end], eachindex(appState[:codeCont][lines[end]]) ], ]
-    indes = eachindex(appState[:codeCont])
-    wim = vimdow(Broadcast.broadcasted((String ∘ vcat), appState[:codeCont], ' '), cs, appState[:vimCur][end], [#=sel=#], indes)
+    wim = vimdow(Broadcast.broadcasted((String ∘ vcat), appState[:codeCont], ' '), cs, appState[:vimCur][end])
     append!(wim[4], styles)
     appState[:vimView] = applyText(wim..., appState[:vimView], ismissing(appState[:vimView]) ? missing : lines )
-             #  filter(in(eachindex(appState[:codeCont])), )
 
     vimHeight = min(size(appState[:vimView], 2), div(size(surf2d, 2) - 40, fHeight)*fHeight)
 
