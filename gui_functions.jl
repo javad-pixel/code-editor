@@ -123,7 +123,6 @@ function roundedRect(wh, r)
         i==4 && (p = (x, y); v = c)
 
         rec[ cRange(size(v), p .+ 1)... ] = v
-        # setindex!(rec, v, cRange(size(v), p .+ 1)...)
     end
     rec
 end

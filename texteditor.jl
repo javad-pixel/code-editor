@@ -96,7 +96,7 @@ end
 
 include("initSdl.jl")
 
-# vimModes = [:normalMode, :insertMode, :visualMode]
+# vimModes => :normalMode | :insertMode | :visualMode
 cVimMode = Ref(:normalMode)
 
 upPt = n-> begin
