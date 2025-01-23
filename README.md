@@ -23,5 +23,5 @@
 ## How to Run
 After installing the dependencies simply run
 ```sh
-julia texteditor.jl
+julia code-editor.jl
 ```
