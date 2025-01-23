@@ -5,40 +5,7 @@ function strAdvance(face, str)
 
     UInt16[0; accumulate(+, advance)]
 end
-function renderLine(str, defBg, defCx, st=[], wid=missing)
 
-    advanc = strAdvance(face, str)
-
-    w = 2+ advanc[end]
-
-    ov = fill(defBg, coalesce(wid, w + div(w, 50) ), fHeight)
-
-    for (rng, _, bg) in Iterators.filter(s-> length(s) > 2, st),
-        r in rng
-
-        vrng = range( ( advanc[[0, 1] .+ r] .+ (1, 0) .+ 1)...)
-        fill!(view(ov, vrng, 1:fHeight), bg)
-    end
-
-    fgc = Base.Generator(eachindex(str)) do i
-
-        cx = findlast(st) do (rng, c, _...)
-            (i in rng) & !ismissing(c)
-        end
-        isnothing(cx) ? defCx : st[ cx ][2]
-    end
-
-    linePos = (1, ascender) .+ 1
-
-    glyphs = ( getGlyph(face, c)[1:2] for c in str )
-
-    for ( cx, (bmap, anchor), gOffset ) in zip(fgc, glyphs, ( (x, 0) for x in advanc ))
-
-        applyCx(ov, cx, bmap, anchor .+ gOffset .+ linePos)
-    end
-
-    ov
-end
 function applyText(content, defBg, defCx, styles=[], ov=missing, selLines=missing)
     
     if ismissing(ov)
