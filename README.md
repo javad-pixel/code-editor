@@ -15,6 +15,7 @@
 - vim Keybinding
   
 ## Dependencies
+- JuliaSyntaxHighlighting.jl
 - Freetype.jl
 - SimpleDirectMediaLayer.jl (The SDL wrapper for Julia)
 - SDL2 (Installed on system)
