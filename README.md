@@ -5,7 +5,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/javad-pixel/texteditor/master/assets/windowcast-1.gif"/>
+    <img src="https://github.com/javad-pixel/code-editor/blob/master/assets/windowcast-1.gif"/>
   </picture>
 </p>
 
