@@ -1,7 +1,7 @@
 
 
 
-A simple text editor written in julia using Freetype and SDL libraries
+# A simple text editor written in julia using Freetype and SDL libraries
 
 <p align="center">
   <picture>
@@ -9,13 +9,12 @@ A simple text editor written in julia using Freetype and SDL libraries
   </picture>
 </p>
 
-# Features:
-  ## Syntax Highlighting
-  ## Custom theme
-  ## vim Keybinding
+## Features
+- Syntax Highlighting
+- Custom theme
+- vim Keybinding
   
-  
-# Dependencies:
-  ## Freetype.jl
-  ## SimpleDirectMediaLayer.jl (The SDL wrapper for Julia)
-  ## SDL2 (Installed on system)
+## Dependencies
+- Freetype.jl
+- SimpleDirectMediaLayer.jl (The SDL wrapper for Julia)
+- SDL2 (Installed on system)
