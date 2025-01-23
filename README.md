@@ -18,3 +18,9 @@
 - Freetype.jl
 - SimpleDirectMediaLayer.jl (The SDL wrapper for Julia)
 - SDL2 (Installed on system)
+
+## How to Run
+After installing the dependencies simply run
+```sh
+julia texteditor.jl
+```
