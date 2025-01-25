@@ -1,5 +1,5 @@
 
-# RGB Functions 
+# RGB Functions =>
 
 # Convert 32bit pixel into UInt8[red, green, blue]
 # example:
@@ -28,7 +28,7 @@ end
 # example:
 # julia> linearCx(0x2e3440, 0xd8dee9, 0x88)
 # 0x00888e9a
-function linearCx(C1::UInt32, C2::UInt32, G::UInt8) # inputExample -> 
+function linearCx(C1::UInt32, C2::UInt32, G::UInt8)
     if     G == 0x00; C1
     elseif G == 0xff; C2
     else
@@ -38,7 +38,7 @@ function linearCx(C1::UInt32, C2::UInt32, G::UInt8) # inputExample ->
     end
 end
 
-# Matrix Functions 
+# Matrix Functions =>
 
 cRange(wh, cord=(1,1)) = range.(cord, wh .+ cord .- 1)
 draw2d(arr, val, cord=(1,1)) = setindex!(arr, val, cRange(size(val), cord)... )
