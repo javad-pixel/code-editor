@@ -1,16 +1,34 @@
-# 2D Array Functions 
-cRange(wh, cord=(1,1)) = range.(cord, wh .+ cord .- 1)
-draw2d(arr, val, cord=(1,1)) = setindex!(arr, val, cRange(size(val), cord)... )
 
 # RGB Functions 
-CxRGB(Cx::UInt32) = # inputExample -> 0x2e3440 , 0xrrggbb
+
+# Convert 32bit pixel into UInt8[red, green, blue]
+# example:
+# julia> CxRGB(0x2e3440)
+# (0x2e, 0x34, 0x40)
+CxRGB(Cx::UInt32) =
     reinterpret(NTuple{4, UInt8}, Cx)[1:3] |> reverse
-function toCx(rgb) # inputExample -> UInt8[39, 41, 54] , (0xrr, 0xgg, 0xbb)
+
+# Convert UInt8[red, green, blue] into 32bit pixel
+# example:
+# julia> toCx([0x2e, 0x34, 0x40])
+# 0x2e3440
+function toCx(rgb)
 
     rgb = collect(rgb)
     reinterpret(UInt32, [reverse(rgb); 0x0] )[]
 end
-function linearCx(C1, C2, G::UInt8) # inputExample -> ( backGround::Cx, textColor::Cx, GrayScale::UInt8 )
+
+# Linear Color interpolation Function
+# ( firstColor::UInt32, secondColor::UInt32, GrayScale::UInt8 )
+# G: 0 => returns the first color
+# G: 255 => returns the second color
+# G: 1:254 => calculates a color between C1 and C2
+# based on Linear Color Interpolation formula
+#
+# example:
+# julia> linearCx(0x2e3440, 0xd8dee9, 0x88)
+# 0x00888e9a
+function linearCx(C1::UInt32, C2::UInt32, G::UInt8) # inputExample -> 
     if     G == 0x00; C1
     elseif G == 0xff; C2
     else
@@ -19,6 +37,11 @@ function linearCx(C1, C2, G::UInt8) # inputExample -> ( backGround::Cx, textColo
         toCx( trunc.(UInt8, C) )
     end
 end
+
+# Matrix Functions 
+
+cRange(wh, cord=(1,1)) = range.(cord, wh .+ cord .- 1)
+draw2d(arr, val, cord=(1,1)) = setindex!(arr, val, cRange(size(val), cord)... )
 
 function applyCx(bg, cx, bmap, pos)
 
