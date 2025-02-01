@@ -9,8 +9,7 @@ julia> CxRGB(0x2e3440)
 (0x2e, 0x34, 0x40)
 
 """
-CxRGB(Cx::UInt32) =
-    reinterpret(NTuple{4, UInt8}, Cx)[1:3] |> reverse
+CxRGB(Cx::UInt32) = reinterpret(NTuple{4, UInt8}, Cx)[3:-1:1]
 
 """
 Convert UInt8[red, green, blue] into 32bit pixel
